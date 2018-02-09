@@ -22,6 +22,9 @@ public class PlayerMovement : MonoBehaviour {
     void FixedUpdate()
     {
         transform.Rotate(transform.up * turnSpeed * Input.GetAxis("Horizontal") * Time.fixedDeltaTime);
+
+        
+
         if (rb.velocity.magnitude <= maxSpeed)
         {
             rb.AddForce(transform.forward * moveSpeed);

@@ -2,21 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Biome {
+public class Biome : MonoBehaviour {
 
-    List<GameObject> biomeObjects;
+    public List<GameObject> biomeObjects;
+    public Transform parent;
+    public Transform basePrefab;
 
-    void Spawn()
+    public virtual void Spawn()
     {
-
+        Debug.Log("base.spawn");
+        SpawnBase();
     }
 
-    void DeSpawn() //TODO: pooling
+    private void Start()
     {
-
+        parent = this.transform;
+        //Spawn();
     }
 
-    void SpawnPlane()
+    public virtual void DeSpawn() //TODO: pooling
+    {
+        foreach (GameObject item in biomeObjects)
+        {
+            GameObject.Destroy(item);
+        }
+    }
+
+    public virtual void SpawnBase()
     {
         
     }
