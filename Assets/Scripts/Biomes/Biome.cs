@@ -7,6 +7,7 @@ public class Biome : MonoBehaviour {
     public List<GameObject> biomeObjects;
     public Transform parent;
     public Transform basePrefab;
+    
 
     public virtual void Spawn()
     {
@@ -30,6 +31,10 @@ public class Biome : MonoBehaviour {
 
     public virtual void SpawnBase()
     {
-        
+        Vector3 pos = transform.position;
+        GameObject go = Instantiate(basePrefab,pos,Quaternion.identity,parent).gameObject;
+
+        biomeObjects.Add(gameObject);
+        biomeObjects.Add(go);
     }
 }
