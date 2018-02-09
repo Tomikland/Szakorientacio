@@ -19,7 +19,6 @@ public class PlayerMovement : MonoBehaviour {
         movement = new Vector3(0, 0, 1);
         transform.Rotate(transform.up * turnSpeed * Input.GetAxis("Horizontal") * Time.deltaTime);
         if (rb.velocity.magnitude <= maxSpeed)
-            rb.AddForce(transform.forward * moveSpeed * Time.deltaTime);
-        Debug.Log(rb.velocity.magnitude);
+            rb.AddForce(transform.forward * moveSpeed);
 	}
 }
