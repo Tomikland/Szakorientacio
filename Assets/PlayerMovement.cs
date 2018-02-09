@@ -30,12 +30,12 @@ public class PlayerMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         float rotY = rb.rotation.eulerAngles.y;
-        if (rotY >= fixedRotation - 50 && rotY <= fixedRotation + 50)
+        if (rotY >= fixedRotation - maxTurn && rotY <= fixedRotation + maxTurn)
             transform.Rotate(transform.up * turnSpeed * Input.GetAxis("Horizontal") * Time.deltaTime);
-        else if (rotY < fixedRotation - 50)
-            transform.rotation = Quaternion.Euler(0, fixedRotation - 50 , 0);
-        else if (rotY > fixedRotation + 50)
-            transform.rotation = Quaternion.Euler(0, fixedRotation + 50, 0);
+        else if (rotY < fixedRotation - maxTurn)
+            transform.rotation = Quaternion.Euler(0, fixedRotation - maxTurn, 0);
+        else if (rotY > fixedRotation + maxTurn)
+            transform.rotation = Quaternion.Euler(0, fixedRotation + maxTurn, 0);
 
         if (rb.velocity.magnitude <= maxSpeed)
             rb.AddForce(transform.forward * moveSpeed);
@@ -47,6 +47,5 @@ public class PlayerMovement : MonoBehaviour {
             rb.velocity = new Vector3(0 , 0 , 0);
             rb.rotation = Quaternion.Euler(0f , -90f , 0f);
         }
-        Debug.Log(Input.GetAxis("Horizontal"));
 	}
 }
