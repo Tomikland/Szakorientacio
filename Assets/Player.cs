@@ -6,7 +6,7 @@ public class Player : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		//No comment
 	}
 	
 	// Update is called once per frame
