@@ -7,45 +7,29 @@ public class PlayerMovement : MonoBehaviour {
     // Use this for initialization
     public float moveSpeed = 3f;
     public float turnSpeed = 1f;
-    public float maxSpeed = 20f;
-    public Vector3 startPosition;
     public float maxTurn = 50f;
-    private float fixedRotation;
-    Rigidbody rb;
-
-    void Clamp(float val , float min , float max)
-    {
-        if (val < min)
-            val = min;
-        else if (val >= max)
-            val = max;
-    }
+    private Vector3 startPos;
+    private Rigidbody rb;
+    private Quaternion startRot;
 
     void Start () {
+        startPos = transform.position;
+        startRot = transform.rotation;
         rb = GetComponent<Rigidbody>();
-        startPosition = transform.position;
-        fixedRotation = rb.rotation.eulerAngles.y;
     }
 	
 	// Update is called once per frame
 	void Update () {
-        float rotY = rb.rotation.eulerAngles.y;
-        if (rotY >= fixedRotation - maxTurn && rotY <= fixedRotation + maxTurn)
-            transform.Rotate(transform.up * turnSpeed * Input.GetAxis("Horizontal") * Time.deltaTime);
-        else if (rotY < fixedRotation - maxTurn)
-            transform.rotation = Quaternion.Euler(0, fixedRotation - maxTurn, 0);
-        else if (rotY > fixedRotation + maxTurn)
-            transform.rotation = Quaternion.Euler(0, fixedRotation + maxTurn, 0);
+        //Moving to the direction we are facing at
+        transform.position += transform.forward * Time.deltaTime * moveSpeed;
+        transform.Rotate(0, Input.GetAxis("Horizontal") * maxTurn * Time.deltaTime, 0);
 
-        if (rb.velocity.magnitude <= maxSpeed)
-            rb.AddForce(transform.forward * moveSpeed);
-
-        //Just for development
-        if (rb.position.y < -2)
+        //Just for developping purposes
+        if (transform.position.y < -3)
         {
-            transform.position = startPosition;
-            rb.velocity = new Vector3(0 , 0 , 0);
-            rb.rotation = Quaternion.Euler(0f , -90f , 0f);
+            transform.position = startPos;
+            rb.velocity = Vector3.zero;
+            transform.rotation = startRot;
         }
-	}
+    }
 }
