@@ -5,7 +5,7 @@ using UnityEngine;
 public class BiomeManager : MonoBehaviour {
 
     public GameObject player;
-    public float biomeSize = 40;
+    public float biomeSize = 20;
     public int biomeNum = 0;
     public int biomeBuffer = 4;
     public List<GameObject> biomes = new List<GameObject>();

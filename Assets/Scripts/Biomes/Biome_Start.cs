@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour {
+public class Biome_Start : Biome {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public Transform prefabStartBiome;
+
+    void Start()
+    {
+        parent = this.transform;
+        Spawn();
+    }
+
+    public override void Spawn()
+    {
+        base.Spawn();
+    }
 }
