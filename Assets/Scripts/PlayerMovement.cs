@@ -31,9 +31,13 @@ public class PlayerMovement : MonoBehaviour {
         //Just for development purposes
         if (transform.position.y < -3)
         {
-            transform.position = startPos;
-            rb.velocity = Vector3.zero;
-            transform.rotation = startRot;
+            ResetPlayer();
         }
+    }
+    public void ResetPlayer()
+    {
+        transform.position = startPos;
+        rb.velocity = Vector3.zero;
+        transform.rotation = startRot;
     }
 }
