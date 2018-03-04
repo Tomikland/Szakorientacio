@@ -11,7 +11,6 @@ public class Biome : MonoBehaviour {
 
     public virtual void Spawn()
     {
-        Debug.Log("base.spawn");
         SpawnBase();
     }
 

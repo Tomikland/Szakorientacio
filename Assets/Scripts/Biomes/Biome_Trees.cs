@@ -26,8 +26,6 @@ public class Biome_Trees : Biome {
     {
         base.Spawn();
 
-        Debug.Log("trees cool");
-
         for (int i = 0; i < 10; i++)
         {
             Vector3 pos = transform.position + new Vector3(Random.Range(-10,10), 0, Random.Range(-10, 10));

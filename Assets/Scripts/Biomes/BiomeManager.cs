@@ -24,8 +24,6 @@ public class BiomeManager : MonoBehaviour {
             if (biomeNum - biomeBuffer - 2 >= 0)
             {
                 biomes[biomeNum - biomeBuffer - 2].GetComponent<Biome>().DeSpawn();
-
-                Debug.Log("Despawn");
             }
             if (i > 10)
             {
