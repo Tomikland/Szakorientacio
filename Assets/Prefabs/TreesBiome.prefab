@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4876832720840024}
   - component: {fileID: 114706304950312974}
   m_Layer: 0
-  m_Name: Trees
+  m_Name: TreesBiome
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54,5 +54,4 @@ MonoBehaviour:
   biomeObjects: []
   parent: {fileID: 0}
   basePrefab: {fileID: 4169249610428034, guid: 3220de8d3d687174582d95cfd10b946d, type: 2}
-  biomeNum: 0
   treePrefab: {fileID: 4862528889256010, guid: e437b0f5c81b8734390ebe91f10d4ba3, type: 2}
