@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour {
         {
             was = true;
             score = Mathf.Ceil(Mathf.Abs(transform.position.x));
-            Transform pm = transform.FindChild("PlayerModel");
+            Transform pm = transform.Find("PlayerModel");
             if (pm != null)
             {
                 List<Rigidbody> crbs = new List<Rigidbody>();

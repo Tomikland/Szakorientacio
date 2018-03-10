@@ -10,6 +10,7 @@ public class BiomeManager : MonoBehaviour {
     public int biomeBuffer = 4;
     public List<GameObject> biomes = new List<GameObject>();
     public GameObject treesPrefab;
+    public GameObject startPrefab;
     public Transform parent;
 
 	// Update is called once per frame
@@ -35,9 +36,15 @@ public class BiomeManager : MonoBehaviour {
     {
         //TODO: randomly choose biome type
 
-        Vector3 pos = new Vector3(-1f*biomeNum*biomeSize,0,0);
+        GameObject prefabToSpawn = treesPrefab;
+        if( biomeNum == 0)
+        {
+            prefabToSpawn = startPrefab;
+        }
 
-        GameObject go = Instantiate(treesPrefab, pos, Quaternion.identity, parent).gameObject;
+        Vector3 pos = new Vector3(-1f*biomeNum*biomeSize - biomeSize/2,0,0);
+
+        GameObject go = Instantiate(prefabToSpawn, pos, Quaternion.identity, parent).gameObject;
 
         biomes.Add(go);
     }

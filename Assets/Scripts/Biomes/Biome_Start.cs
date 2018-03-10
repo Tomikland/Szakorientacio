@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Biome_Start : Biome {
 
-    public Transform prefabStartBiome;
+   // public Transform prefabStartBiome;
 
     void Start()
     {
@@ -15,9 +15,9 @@ public class Biome_Start : Biome {
     public override void Spawn()
     {
         Vector3 pos = transform.position;
-        GameObject go = Instantiate(prefabStartBiome, pos, Quaternion.identity, parent).gameObject;
+       // GameObject go = Instantiate(prefabStartBiome, pos, Quaternion.identity, parent).gameObject;
 
         biomeObjects.Add(gameObject);
-        biomeObjects.Add(go);
+        //biomeObjects.Add(go);
     }
 }
