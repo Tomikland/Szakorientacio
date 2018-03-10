@@ -25,20 +25,15 @@ public class PlayerMovement : MonoBehaviour {
     {
         RaycastHit hit;
         Physics.Raycast(rb.position, Vector3.down, out hit);
-        if (Input.GetKeyDown(KeyCode.Space) && hit.distance == 0)
-        {
+        if (Input.GetKeyDown(KeyCode.Space) && hit.distance < 0.01)
             rb.AddRelativeForce(Vector3.up * jumpForce);
-            Debug.Log("JUMP BITCHEEEES!" + i++);
-        }
+        transform.Rotate(0, Input.GetAxis("Horizontal") * turnSpeed * Time.fixedDeltaTime, 0);
+        if (rb.velocity.magnitude < maxSpeed)
+            rb.AddRelativeForce(Vector3.forward * moveSpeed * Time.fixedDeltaTime);
     }
 	// Update is called once per frame
-	void Update () 
+	void Update ()
     {
-        //Moving to the direction we are facing at
-        if (rb.velocity.magnitude < maxSpeed)
-            rb.AddRelativeForce(Vector3.forward * moveSpeed * Time.deltaTime);
-        transform.Rotate(0, Input.GetAxis("Horizontal") * turnSpeed * Time.deltaTime, 0);
-
         //Just for development purposes
         if (transform.position.y < -3)
         {
