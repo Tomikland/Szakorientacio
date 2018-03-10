@@ -5,6 +5,7 @@ using UnityEngine;
 public class Biome_Trees : Biome {
 
     public Transform treePrefab;
+    public int treeCount = 10;
 
     // Use this for initialization
     void Start() {
@@ -26,9 +27,9 @@ public class Biome_Trees : Biome {
     {
         base.Spawn();
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < treeCount; i++)
         {
-            Vector3 pos = transform.position + new Vector3(Random.Range(-10,10), 0, Random.Range(-10, 10));
+            Vector3 pos = transform.position + new Vector3(Random.Range(-10,10), 0, Random.Range(-13, 13));
             GameObject go = Instantiate(treePrefab, pos, Quaternion.identity, parent).gameObject;
 
             biomeObjects.Add(go);

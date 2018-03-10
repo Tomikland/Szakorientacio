@@ -30,9 +30,12 @@ public class PlayerMovement : MonoBehaviour {
         {
             RaycastHit hit;
             Physics.Raycast(rb.position, Vector3.down, out hit);
-            if (Input.GetKeyDown(KeyCode.Space) && hit.distance < 0.01)
-                rb.AddRelativeForce(Vector3.up * jumpForce);
-            transform.Rotate(0, Input.GetAxis("Horizontal") * turnSpeed * Time.fixedDeltaTime, 0);
+            if (transform.position.x <= -18)
+            {
+                if (Input.GetKeyDown(KeyCode.Space) && hit.distance < 0.01)
+                    rb.AddRelativeForce(Vector3.up * jumpForce);
+                transform.Rotate(0, Input.GetAxis("Horizontal") * turnSpeed * Time.fixedDeltaTime, 0);
+            }
             if (rb.velocity.magnitude < maxSpeed)
                 rb.AddRelativeForce(Vector3.forward * moveSpeed * Time.fixedDeltaTime);
         }
