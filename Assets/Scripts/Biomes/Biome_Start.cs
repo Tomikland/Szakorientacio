@@ -14,6 +14,10 @@ public class Biome_Start : Biome {
 
     public override void Spawn()
     {
-        base.Spawn();
+        Vector3 pos = transform.position;
+        GameObject go = Instantiate(prefabStartBiome, pos, Quaternion.identity, parent).gameObject;
+
+        biomeObjects.Add(gameObject);
+        biomeObjects.Add(go);
     }
 }

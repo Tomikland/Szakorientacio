@@ -10,11 +10,15 @@ public class GameManager : MonoBehaviour {
     public bool was = false;
     Vector3 startPos;
     Rigidbody rb;
+    Quaternion startRot;
+    List<GameObject> partOb = new List<GameObject>();
+    public GameObject pmPrefab; 
     public BiomeManager bm;
     // Use this for initialization
     void Start() {
         startPos = transform.position;
         rb = GetComponent<Rigidbody>();
+        startRot = transform.rotation;
     }
 
     // Update is called once per frame
@@ -36,9 +40,11 @@ public class GameManager : MonoBehaviour {
                 {
                     Transform child = pm.GetChild(i);
                     child.gameObject.AddComponent<Rigidbody>();
+                    partOb.Add(child.gameObject);
                     Rigidbody crb = child.GetComponent<Rigidbody>();
                     crbs.Add(crb);
                 }
+                partOb.Add(pm.gameObject);
                 pm.DetachChildren();
                 foreach (Rigidbody crb in crbs)
                     crb.AddRelativeForce(Vector3.up * explForce);
@@ -51,12 +57,26 @@ public class GameManager : MonoBehaviour {
     void ResetGame()
     {
         bm.biomeNum = 0;
-        transform.position = startPos;
         rb.velocity = Vector3.zero;
-        //rb.isKinematic = false;
+        transform.position = startPos;
+        transform.rotation = startRot;
+        foreach (GameObject ob in partOb)
+            GameObject.Destroy(ob);
+
+        GameObject go = Instantiate(pmPrefab , transform.position + new Vector3(0 , 0.5f , 0) , transform.rotation , this.gameObject.transform);
+        go.name = "PlayerModel";
+        rb.isKinematic = false;
         foreach (GameObject biome in bm.biomes)
             GameObject.Destroy(biome);
         bm.biomes.Clear();
+        was = false;
+        gameOn = true;
+    }
+
+    IEnumerator sec(float time)
+    {
+        yield return new WaitForSeconds(time);
+        ResetGame();
     }
 
     void OnCollisionEnter(Collision collision)
@@ -64,8 +84,8 @@ public class GameManager : MonoBehaviour {
         if (collision.gameObject.tag != "Floor" && was == false)
         {
             EndGame();
-            //TODO : Some delay here
-            ResetGame();
+            //TODO : Button press -> ResetGame();
+            StartCoroutine(sec(3));
         }
     }
 }
