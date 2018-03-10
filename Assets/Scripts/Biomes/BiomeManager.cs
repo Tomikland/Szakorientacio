@@ -15,11 +15,9 @@ public class BiomeManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         biomeNum = Mathf.RoundToInt( Mathf.Abs( player.transform.position.x) / biomeSize) + biomeBuffer;
-
         for (int i = biomes.Count; i <= biomeNum ; i++)
         {
             GenerateBiome(i);
-
             //Despawn unused biome
             if (biomeNum - biomeBuffer - 2 >= 0)
             {
