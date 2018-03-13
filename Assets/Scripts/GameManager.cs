@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour {
 
     public float explForce = 5.0f;
     private float score;
+    private float maxSpeed;
+    private float moveSpeed;
     public bool gameOn = true;
     public bool was = false;
     Vector3 startPos;
@@ -16,6 +18,8 @@ public class GameManager : MonoBehaviour {
     public BiomeManager bm;
     // Use this for initialization
     void Start() {
+        maxSpeed = GetComponent<PlayerMovement>().maxSpeed;
+        moveSpeed = GetComponent<PlayerMovement>().moveSpeed;
         startPos = transform.position;
         rb = GetComponent<Rigidbody>();
         startRot = transform.rotation;
@@ -69,6 +73,8 @@ public class GameManager : MonoBehaviour {
         foreach (GameObject biome in bm.biomes)
             GameObject.Destroy(biome);
         bm.biomes.Clear();
+        GetComponent<PlayerMovement>().moveSpeed = moveSpeed;
+        GetComponent<PlayerMovement>().maxSpeed = maxSpeed;
         was = false;
         gameOn = true;
     }
