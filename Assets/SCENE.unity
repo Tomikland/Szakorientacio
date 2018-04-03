@@ -175,9 +175,10 @@ MonoBehaviour:
   rotOffset: {x: 0, y: 0, z: 0}
   startTime: 0
   speed: 0.3
-  rotSpeed: 3.2
+  rotSpeed: 3.4
   startPosition: {x: 0, y: 0, z: 0}
   startRot: {x: 0, y: 0, z: 0, w: 0}
+  normalRot: {x: 0, y: -0.70710677, z: 0, w: 0.70710677}
   follow: 0
   animation: 0
 --- !u!20 &50024460

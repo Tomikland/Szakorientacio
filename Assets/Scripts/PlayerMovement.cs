@@ -55,6 +55,10 @@ public class PlayerMovement : MonoBehaviour {
 
                 rb.AddForce(force);
                 }
+
+            Vector3 rot = transform.rotation.eulerAngles;
+            rot.z = 0;
+            transform.rotation = Quaternion.Euler(rot);
         }
     }
 
