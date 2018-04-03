@@ -48,6 +48,7 @@ public class CameraFollow : MonoBehaviour {
         if(animation == true)
         {
             endpos = player.transform.position + posOffset;
+            endpos.y = posOffset.y;
             float distance = Vector3.Distance(transform.position, endpos);
             float distCovered = (Time.time - startTime) * speed;
             float fracJourney = distCovered / distance;
