@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         score = Mathf.FloorToInt(Mathf.Abs(transform.position.x)/20);
-        scoretext.text = "Szkór: "+score;
+        scoretext.text = "Score: "+score;
 
         if (gameOn == false)
         {
@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour {
 
                 if (score > highscore) highscore = score;
 
-                tm.text = "Hájszkór: " + highscore.ToString();
+                tm.text = "Highscore: " + highscore.ToString();
             }
         }
     }
